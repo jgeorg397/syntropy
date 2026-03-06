@@ -128,7 +128,7 @@ html {
  left: 0;
  width: 100vw;
  height: 100vh;
- background: #011027;
+ background: #ffffff;
  border-radius: 0;
  box-shadow: none;
  padding: 0;
@@ -917,10 +917,16 @@ body:hover .cursor-circle {
  .team-cards {
  grid-template-columns: 1fr;
  gap: 24px;
+ width: calc(100% - 64px);
+ margin-left: 32px;
+ margin-right: 32px;
  }
  
  .team-card-image {
- height: 250px;
+ height: 360px;
+ }
+ .team-card-image img {
+ object-position: top center;
  }
  
  .team-card-info {
@@ -1359,7 +1365,7 @@ a, button, input, select, textarea {
  }
  .site-container {
  padding-left: 20px;
- padding-right: 28px;
+ padding-right: 20px;
  }
 } 
 
