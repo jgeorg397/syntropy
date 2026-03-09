@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroContent = document.querySelector('.hero-content');
   if (heroContent) heroContent.classList.add('visible');
 
-  const waveVideo = document.getElementById('waveVideo');
-  if (waveVideo) waveVideo.playbackRate = 0.75;
+  const circleVideo = document.getElementById('circleVideo');
+  if (circleVideo) circleVideo.playbackRate = 0.75;
 });
 
 // Smooth scrolling for anchor links
