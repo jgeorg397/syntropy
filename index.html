@@ -4,19 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Syntropy – Family Office</title>
-  <link rel="icon" type="image/png" href="assets/Logo_PNG.png">
+  <link rel="icon" type="image/png" href="assets/Logo_Circle.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="cursor-circle" id="cursorCircle"></div>
+  <div class="cursor-circle" id="cursorCircle" aria-hidden="true">
+      <img src="assets/Logo_Circle.png" alt="" class="cursor-circle-img" />
+    </div>
   <div class="status-bar">
     <a href="#top" class="status-brand" aria-label="Back to top">
-      <img src="assets/Logo_PNG.png" alt="Syntropy" class="logo-image" />
+      <img src="assets/Logo_PNG_v3.png" alt="Syntropy" class="logo-image" />
     </a>
     <nav class="status-nav">
       <a href="#top">Home</a>
+      <a href="#about">About Us</a>
       <a href="#team">Team</a>
+      <a href="#portfolio">Portfolio</a>
       <a href="#contact">Contact</a>
     </nav>
     <button class="mobile-menu-btn" aria-label="Open menu">
@@ -24,7 +28,9 @@
     </button>
     <div class="mobile-menu">
       <a href="#top">Home</a>
+      <a href="#about">About Us</a>
       <a href="#team">Team</a>
+      <a href="#portfolio">Portfolio</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
@@ -39,10 +45,27 @@
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="site-container">
         <div class="container hero-content">
-          <h1><span class="hero-accent">Syntropy</span> is the family office of Dennis Schmoltzi and Manuel Müller, founders of Emma – The Sleep Company.</h1>
+          <h1 class="hero-headline">We amplify growth.</h1>
+          <p class="hero-tagline">Of capital. Of people. Of the communities we care about.</p>
+          <p class="hero-body">Syntropy is a founder-led family office built on a single conviction: that financial returns, intellectual depth, and relational influence compound together when deliberately architected. We build the engines, the platforms, and the communities that make that compounding possible.</p>
           <div class="hero-cta">
             <a href="#contact" class="btn btn-primary" data-preselect="founder">Pitch Us</a>
             <a href="#contact" class="btn btn-secondary" data-preselect="investor">Invest With Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT US SECTION -->
+    <section class="about fade-in" id="about">
+      <div class="site-container">
+        <div class="container about-section">
+          <div class="about-header">
+            <h2 class="about-heading">About Us</h2>
+            <div class="about-accent-line"></div>
+          </div>
+          <div class="about-content">
+            <p>Syntropy is a founder-led family office built on a single conviction: that financial returns, intellectual depth, and relational influence compound together when deliberately architected. We build the engines, the platforms, and the communities that make that compounding possible.</p>
           </div>
         </div>
       </div>
@@ -85,7 +108,7 @@
             </div>
             <div class="team-card">
               <div class="team-card-image">
-                <img src="assets/Isabell.jpeg" alt="Isabell Schastok" />
+                <img src="assets/Isabell_2.jpg" alt="Isabell Schastok" />
               </div>
               <div class="team-card-info">
                 <h3 class="team-name">Isabell Schastok</h3>
@@ -110,6 +133,34 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section class="portfolio fade-in" id="portfolio">
+      <div class="site-container">
+        <div class="container portfolio-section">
+          <div class="portfolio-header">
+            <h2 class="portfolio-heading">Portfolio</h2>
+            <div class="portfolio-accent-line"></div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-ticker-wrap" aria-hidden="true">
+        <div class="portfolio-ticker-track">
+          <div class="portfolio-logo" aria-hidden="true"><span>Logo 1</span></div>
+          <div class="portfolio-logo" aria-hidden="true"><span>Logo 2</span></div>
+          <div class="portfolio-logo" aria-hidden="true"><span>Logo 3</span></div>
+          <div class="portfolio-logo" aria-hidden="true"><span>Logo 4</span></div>
+          <div class="portfolio-logo" aria-hidden="true"><span>Logo 5</span></div>
+          <div class="portfolio-logo" aria-hidden="true"><span>Logo 6</span></div>
+          <div class="portfolio-logo" aria-hidden="true"><span>Logo 1</span></div>
+          <div class="portfolio-logo" aria-hidden="true"><span>Logo 2</span></div>
+          <div class="portfolio-logo" aria-hidden="true"><span>Logo 3</span></div>
+          <div class="portfolio-logo" aria-hidden="true"><span>Logo 4</span></div>
+          <div class="portfolio-logo" aria-hidden="true"><span>Logo 5</span></div>
+          <div class="portfolio-logo" aria-hidden="true"><span>Logo 6</span></div>
         </div>
       </div>
     </section>

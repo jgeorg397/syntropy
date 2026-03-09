@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'a', 'button', 'input', 'select', 'textarea',
       '.btn', '.focus-card', '.team-card', '.differentiator-card',
       '.status-bar', '.status-nav', '.mobile-menu',
-      '.hero-content', '.about-us-box', '.contact-form'
+      '.about-us-box', '.contact-form'
     ];
 
     const shouldHideCircle = (element) => {
