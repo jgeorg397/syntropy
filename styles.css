@@ -782,16 +782,53 @@ body:hover .cursor-circle {
  height: 4px;
  background: var(--accent);
  margin-top: 8px;
- margin-bottom: 40px;
+ margin-bottom: 32px;
  border-radius: 2px;
 }
 
-.about-content p {
+.about-intro {
  color: var(--blue);
  font-size: 1.2rem;
  line-height: 1.7;
- margin: 0;
+ margin: 0 0 48px 0;
  max-width: 65ch;
+}
+
+.about-mission-vision {
+ padding: 36px 40px 40px;
+ background: linear-gradient(135deg, rgba(255,137,1,0.06) 0%, rgba(1,16,39,0.02) 100%);
+ border-left: 4px solid var(--accent);
+ border-radius: 0 10px 10px 0;
+ margin-bottom: 0;
+}
+
+.about-mission-vision .about-block-title:not(:first-child) {
+ margin-top: 32px;
+}
+
+.about-block-title {
+ color: var(--accent);
+ font-size: 1.5rem;
+ font-weight: 800;
+ letter-spacing: -0.02em;
+ margin: 0 0 16px 0;
+}
+
+.about-block-text {
+ color: var(--blue);
+ font-size: 1.12rem;
+ line-height: 1.7;
+ margin: 0 0 16px 0;
+}
+
+.about-block-text:last-child {
+ margin-bottom: 0;
+}
+
+.about-mission-lead {
+ font-size: 1.12rem;
+ font-weight: 400;
+ margin-bottom: 16px;
 }
 
 /***** TEAM SECTION *****/
@@ -942,8 +979,22 @@ body:hover .cursor-circle {
  width: 100px;
  margin-bottom: 32px;
  }
- .about-content p {
+ .about-intro {
  font-size: 1.15rem;
+ margin-bottom: 40px;
+ }
+ .about-mission,
+ .about-vision {
+ padding: 28px 24px 32px;
+ }
+ .about-block-title {
+ font-size: 1.35rem;
+ }
+ .about-mission-vision {
+ padding: 28px 24px 32px;
+ }
+ .about-mission-vision .about-block-title:not(:first-child) {
+ margin-top: 28px;
  }
 
  .portfolio {
@@ -961,8 +1012,11 @@ body:hover .cursor-circle {
  width: 160px;
  height: 88px;
  }
- .portfolio-ticker-track {
+ .portfolio-ticker-set {
  gap: 40px;
+ }
+ .portfolio-ticker-gap {
+ width: 40px;
  }
 
  .team {
@@ -1005,8 +1059,25 @@ body:hover .cursor-circle {
  height: 3px;
  margin-bottom: 28px;
  }
- .about-content p {
+ .about-intro {
  font-size: 1.05rem;
+ margin-bottom: 36px;
+ }
+ .about-mission-vision {
+ padding: 24px 20px 28px;
+ border-radius: 0 8px 8px 0;
+ }
+ .about-mission-vision .about-block-title:not(:first-child) {
+ margin-top: 24px;
+ }
+ .about-block-title {
+ font-size: 1.25rem;
+ }
+ .about-mission-lead {
+ margin-bottom: 14px;
+ }
+ .about-block-text {
+ font-size: 1rem;
  }
 
  .portfolio {
@@ -1034,8 +1105,13 @@ body:hover .cursor-circle {
  .portfolio-logo span {
  font-size: 0.8rem;
  }
- .portfolio-ticker-track {
+ .portfolio-ticker-set {
  gap: 28px;
+ }
+ .portfolio-ticker-gap {
+ width: 28px;
+ }
+ .portfolio-ticker-track {
  animation-duration: 35s;
  }
 
@@ -1218,11 +1294,21 @@ body:hover .cursor-circle {
 .portfolio-ticker-track {
  display: flex;
  align-items: center;
- gap: 56px;
  width: max-content;
  animation: portfolioTicker 40s linear infinite;
 }
 
+.portfolio-ticker-set {
+ display: flex;
+ align-items: center;
+ gap: 56px;
+ flex-shrink: 0;
+}
+
+.portfolio-ticker-gap {
+ flex-shrink: 0;
+ width: 56px;
+}
 
 .portfolio-logo {
  flex-shrink: 0;
@@ -1231,17 +1317,16 @@ body:hover .cursor-circle {
  display: flex;
  align-items: center;
  justify-content: center;
- background: #e8e8e8;
- border-radius: 8px;
  padding: 16px;
  box-sizing: border-box;
 }
 
-.portfolio-logo span {
- color: var(--blue);
- font-size: 0.9rem;
- font-weight: 600;
- opacity: 0.6;
+.portfolio-logo img {
+ max-width: 100%;
+ max-height: 100%;
+ width: auto;
+ height: auto;
+ object-fit: contain;
 }
 
 @keyframes portfolioTicker {
@@ -1249,7 +1334,7 @@ body:hover .cursor-circle {
   transform: translateX(0);
  }
  100% {
-  transform: translateX(-50%);
+  transform: translateX(-33.333%);
  }
 }
 
