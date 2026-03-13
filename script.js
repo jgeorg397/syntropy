@@ -110,41 +110,6 @@ if (contactForm) {
   });
 }
 
-// Cursor circle
-document.addEventListener('DOMContentLoaded', () => {
-  const cursorCircle = document.getElementById('cursorCircle');
-  if (cursorCircle) {
-    const hideOnElements = [
-      'a', 'button', 'input', 'select', 'textarea',
-      '.btn', '.focus-card', '.team-card', '.differentiator-card',
-      '.status-bar', '.status-nav', '.mobile-menu',
-      '.about-us-box', '.contact-form'
-    ];
-
-    const shouldHideCircle = (element) => {
-      if (!element) return false;
-      let current = element;
-      while (current && current !== document.body) {
-        const tagName = current.tagName?.toLowerCase();
-        if (['a', 'button', 'input', 'select', 'textarea'].includes(tagName)) return true;
-        for (const selector of hideOnElements) {
-          if (current.matches && current.matches(selector)) return true;
-        }
-        current = current.parentElement;
-      }
-      return false;
-    };
-
-    document.addEventListener('mousemove', (e) => {
-      cursorCircle.style.left = e.clientX + 'px';
-      cursorCircle.style.top = e.clientY + 'px';
-      cursorCircle.style.display = shouldHideCircle(e.target) ? 'none' : 'block';
-    });
-    document.addEventListener('mouseenter', () => { cursorCircle.style.display = 'block'; });
-    document.addEventListener('mouseleave', () => { cursorCircle.style.display = 'none'; });
-  }
-});
-
 // Mobile menu toggle
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const mobileMenu = document.querySelector('.mobile-menu');
