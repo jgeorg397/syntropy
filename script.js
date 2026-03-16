@@ -175,7 +175,7 @@ if (mobileMenuBtn && mobileMenu) {
   );
 })();
 
-// About hexagon text rotator (Financial engines / Frontier thinking & discovery / Relational influence)
+// About hexagon text rotator (Financial engines / Frontier thinking & discovery)
 (() => {
   const titleEl = document.getElementById('aboutHexTitle');
   const textEl = document.getElementById('aboutHexText');
@@ -192,15 +192,12 @@ if (mobileMenuBtn && mobileMenu) {
       title: 'Frontier thinking & discovery',
       text:
         "Syntropy is a platform for frontier thinking and discovery. We bring together exceptional minds from science, entrepreneurship, philosophy, and the arts – not to network, but to think. Through curated formats – intimate gatherings, deep dialogues, and focused research collaborations – we create the conditions for ideas that wouldn't emerge anywhere else. We believe the most important questions don't belong to a single discipline. And we believe that the people who pursue them deserve a space that takes them seriously."
-    },
-    {
-      title: 'Relational influence',
-      text:
-        "Lorem ipsum dolor sit amet."
     }
   ];
 
   let index = 0;
+  let autoRotate = true;
+  let intervalId = null;
 
   const applyItem = (i) => {
     const item = items[i];
@@ -215,12 +212,19 @@ if (mobileMenuBtn && mobileMenu) {
     group.addEventListener('click', () => {
       index = i;
       applyItem(index);
+      // Stop auto-rotation once the user has intentionally selected an item
+      autoRotate = false;
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
     });
   });
 
   applyItem(index);
 
-  setInterval(() => {
+  intervalId = setInterval(() => {
+    if (!autoRotate) return;
     index = (index + 1) % items.length;
     applyItem(index);
   }, 10000);
