@@ -902,9 +902,9 @@ body {
  margin: 0 auto;
  padding: 0 32px;
  display: grid;
- grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
- gap: 56px;
- align-items: flex-start;
+ grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.5fr);
+ gap: 64px;
+ align-items: center;
 }
 
 .about-hex-visual {
@@ -913,9 +913,16 @@ body {
  align-items: center;
 }
 
+@media (min-width: 901px) {
+ .about-hex-visual {
+  /* Center hex against the two buckets (not the section heading). */
+  transform: translateY(24px);
+ }
+}
+
 .about-hex-svg {
- width: 260px;
- height: 260px;
+ width: 420px;
+ height: 420px;
  overflow: visible;
 }
 
@@ -946,9 +953,8 @@ body {
 }
 
 .about-hex-dot {
- fill: #ffffff;
- stroke: var(--accent);
- stroke-width: 1.6;
+ fill: var(--accent);
+ stroke: none;
 }
 
 .about-hex-label-group text {
@@ -987,17 +993,44 @@ body {
  align-items: flex-start;
 }
 
+.about-hex-buckets {
+ display: flex;
+ flex-direction: column;
+ gap: 32px;
+ margin-top: 8px;
+}
+
+.about-hex-bucket {
+ padding: 16px 0;
+ border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.about-hex-header-row {
+ display: grid;
+ grid-template-columns: auto minmax(0, 1fr) auto;
+ gap: 16px;
+ align-items: center;
+}
+
+.about-hex-copy {
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
+}
+
 .about-hex-label {
- font-size: 0.8rem;
- letter-spacing: 0.18em;
- text-transform: uppercase;
  color: var(--accent);
- margin-bottom: 14px;
+ font-family: var(--font-heading);
+ font-size: 1.5rem;
+ font-weight: 800;
+ letter-spacing: -0.02em;
+ margin: 0 0 16px 0;
 }
 
 .about-hex-title {
  font-family: var(--font-heading);
  font-size: 1.8rem;
+ font-weight: 900;
  letter-spacing: -0.02em;
  margin: 0 0 12px 0;
  color: var(--blue);
@@ -1008,7 +1041,20 @@ body {
  line-height: 1.7;
  color: #333;
  max-width: 60ch;
- min-height: 18em;
+}
+
+.about-hex-arrow {
+ border: none;
+ background: transparent;
+ color: var(--accent);
+ font-size: 1.8rem;
+ padding: 4px 6px;
+ cursor: pointer;
+ transition: color var(--transition), transform var(--transition);
+}
+.about-hex-arrow:hover {
+ color: var(--accent-dark);
+ transform: translateY(-1px);
 }
 
 @keyframes aboutHexRotate {
@@ -1029,8 +1075,8 @@ body {
   text-align: left;
  }
  .about-hex-svg {
-  width: 220px;
-  height: 220px;
+  width: 300px;
+  height: 300px;
  }
 }
 
@@ -1121,6 +1167,11 @@ body {
  width: 100%;
  height: 100%;
  object-fit: cover;
+}
+
+.team-image-manuel {
+ transform: scale(1.12);
+ transform-origin: center;
 }
 
 .team-placeholder {
@@ -1694,6 +1745,7 @@ body {
  margin: 0 0 18px;
  font-size: 0.98rem;
  line-height: 1.7;
+ white-space: pre-line;
  color: #333;
 }
 .team-modal-linkedin {

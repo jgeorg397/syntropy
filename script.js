@@ -175,60 +175,7 @@ if (mobileMenuBtn && mobileMenu) {
   );
 })();
 
-// About hexagon text rotator (Financial engines / Frontier thinking & discovery)
-(() => {
-  const titleEl = document.getElementById('aboutHexTitle');
-  const textEl = document.getElementById('aboutHexText');
-  const labelGroups = Array.from(document.querySelectorAll('.about-hex-label-group'));
-  if (!titleEl || !textEl || labelGroups.length < 2) return;
-
-  const items = [
-    {
-      title: 'Financial engines',
-      text:
-        "Syntropy invests in exceptional founders building category-defining consumer brands. We invest early – typically at Seed – and stay close. Our edge is operational: we've built and scaled companies across European markets ourselves. We don't just provide capital. We help founders develop – as leaders and as businesses – through structured personal development, deep operational support, and access to a network that compounds over time. We also selectively invest in frontier technology – space, defense, quantum, and physical AI – where we see future relevance and exceptional people working on hard problems."
-    },
-    {
-      title: 'Frontier thinking & discovery',
-      text:
-        "Syntropy is a platform for frontier thinking and discovery. We bring together exceptional minds from science, entrepreneurship, philosophy, and the arts – not to network, but to think. Through curated formats – intimate gatherings, deep dialogues, and focused research collaborations – we create the conditions for ideas that wouldn't emerge anywhere else. We believe the most important questions don't belong to a single discipline. And we believe that the people who pursue them deserve a space that takes them seriously."
-    }
-  ];
-
-  let index = 0;
-  let autoRotate = true;
-  let intervalId = null;
-
-  const applyItem = (i) => {
-    const item = items[i];
-    titleEl.textContent = item.title;
-    textEl.textContent = item.text;
-    labelGroups.forEach((g, idx) => {
-      g.classList.toggle('is-active', idx === i);
-    });
-  };
-
-  labelGroups.forEach((group, i) => {
-    group.addEventListener('click', () => {
-      index = i;
-      applyItem(index);
-      // Stop auto-rotation once the user has intentionally selected an item
-      autoRotate = false;
-      if (intervalId) {
-        clearInterval(intervalId);
-        intervalId = null;
-      }
-    });
-  });
-
-  applyItem(index);
-
-  intervalId = setInterval(() => {
-    if (!autoRotate) return;
-    index = (index + 1) % items.length;
-    applyItem(index);
-  }, 10000);
-})();
+// No JS needed for the static "What we build" buckets
 
 // Fade-in on scroll
 const fadeObserver = new IntersectionObserver((entries) => {
@@ -274,7 +221,7 @@ document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
     {
       name: 'Jonathan Georg',
       role: 'Head of Family Office',
-      bio: "Lorem ipsum dolor sit amet.",
+      bio: "Jonathan is Head of Family Office at Syntropy, with a particular focus on direct investments, venture building, and capital markets.\n\nHe began his career in asset management at DWS Group and Deutsche Bank in Frankfurt and New York, advising institutional investors on custom portfolio strategies, developing proprietary investment models, and managing asset & liability frameworks. Driven by a hands-on entrepreneurial instinct, he went on to co-found and scale a venture-backed consumer brand – leading the company from product development and fundraising through early-stage growth.\n\nBefore Syntropy, Jonathan spent several years at Bain & Company, where he led value creation work across post-acquisition transformation, growth acceleration, and risk for financial sponsors and corporates alike.\n\nJonathan holds a degree in Banking & Finance from Frankfurt School of Finance & Management and is a Certified ESG Analyst. He is based in Frankfurt am Main.",
       linkedin: 'https://www.linkedin.com/in/jonathan-georg'
     }
   ];
