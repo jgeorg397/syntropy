@@ -1224,6 +1224,8 @@ body {
  display: flex;
  flex-direction: column;
  cursor: pointer;
+ text-decoration: none;
+ color: inherit;
 }
 
 .team-card:hover {
@@ -1796,6 +1798,131 @@ body {
 .contact-email-link:hover {
  color: var(--accent);
  border-bottom-color: var(--accent);
+}
+
+/***** TEAM MEMBER PAGE *****/
+.team-member-page .team-member-main {
+ padding: 120px 0 80px;
+ min-height: 60vh;
+}
+
+.team-member-inner {
+ display: grid;
+ grid-template-columns: minmax(280px, 0.45fr) minmax(0, 1fr);
+ gap: 64px;
+ align-items: start;
+ max-width: var(--container-max);
+ margin: 0 auto;
+ padding: 0 32px;
+ }
+
+.team-member-left {
+ position: sticky;
+ top: 120px;
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
+ gap: 16px;
+ }
+
+.team-member-photo {
+ width: 100%;
+ max-width: 320px;
+ aspect-ratio: 3 / 4;
+ border-radius: 12px;
+ overflow: hidden;
+ background: #f0f0f0;
+ }
+
+.team-member-photo img {
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+ }
+
+.team-member-page .team-image-manuel {
+ transform: scale(1.12);
+ transform-origin: center;
+ }
+
+.team-member-name {
+ font-family: var(--font-heading);
+ font-size: 1.75rem;
+ font-weight: 900;
+ color: var(--blue);
+ margin: 0;
+ letter-spacing: -0.02em;
+ }
+
+.team-member-role {
+ font-size: 1.1rem;
+ font-weight: 600;
+ color: var(--accent);
+ margin: 0;
+ }
+
+.team-member-linkedin {
+ display: inline-flex;
+ align-items: center;
+ gap: 8px;
+ color: var(--blue);
+ text-decoration: none;
+ font-weight: 600;
+ font-size: 0.95rem;
+ transition: color var(--transition);
+ }
+
+.team-member-linkedin:hover {
+ color: var(--accent);
+ }
+
+.team-member-linkedin svg {
+ flex-shrink: 0;
+ }
+
+.team-member-right {
+ min-width: 0;
+ }
+
+.team-member-bio {
+ font-size: 1.05rem;
+ line-height: 1.75;
+ color: var(--blue);
+ margin: 0;
+ white-space: pre-line;
+ max-width: 65ch;
+ }
+
+@media (max-width: 900px) {
+ .team-member-inner {
+  grid-template-columns: 1fr;
+  gap: 40px;
+  padding: 0 20px;
+ }
+ .team-member-left {
+  position: static;
+  align-items: center;
+  text-align: center;
+ }
+ .team-member-photo {
+  max-width: 280px;
+  margin: 0 auto;
+ }
+ .team-member-linkedin {
+  align-self: center;
+ }
+ .team-member-bio {
+  max-width: 100%;
+ }
+}
+
+@media (max-width: 600px) {
+ .team-member-page .team-member-main {
+  padding: 100px 0 60px;
+ }
+ .team-member-name {
+  font-size: 1.5rem;
+ }
 }
 
 /***** TEAM MODAL *****/
