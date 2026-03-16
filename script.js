@@ -128,6 +128,104 @@ if (mobileMenuBtn && mobileMenu) {
   });
 }
 
+// Hide header on scroll down, show on scroll up
+(() => {
+  const statusBar = document.querySelector('.status-bar');
+  if (!statusBar) return;
+
+  const getIsMenuOpen = () => !!document.querySelector('.mobile-menu.open');
+
+  let lastScrollY = window.scrollY || 0;
+  let ticking = false;
+
+  const MIN_Y = 40; // don't hide immediately at the very top
+  const DELTA = 8;  // ignore tiny scrolls to avoid jitter
+
+  const update = () => {
+    ticking = false;
+
+    if (getIsMenuOpen()) {
+      statusBar.classList.remove('is-hidden');
+      lastScrollY = window.scrollY || 0;
+      return;
+    }
+
+    const y = window.scrollY || 0;
+    const diff = y - lastScrollY;
+    if (Math.abs(diff) < DELTA) return;
+
+    if (diff > 0 && y > MIN_Y) {
+      statusBar.classList.add('is-hidden');
+    } else if (diff < 0) {
+      statusBar.classList.remove('is-hidden');
+    }
+
+    lastScrollY = y;
+  };
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
+    },
+    { passive: true }
+  );
+})();
+
+// About hexagon text rotator (Financial engines / Frontier thinking & discovery / Relational influence)
+(() => {
+  const titleEl = document.getElementById('aboutHexTitle');
+  const textEl = document.getElementById('aboutHexText');
+  const labelGroups = Array.from(document.querySelectorAll('.about-hex-label-group'));
+  if (!titleEl || !textEl || labelGroups.length < 2) return;
+
+  const items = [
+    {
+      title: 'Financial engines',
+      text:
+        "Syntropy invests in exceptional founders building category-defining consumer brands. We invest early – typically at Seed – and stay close. Our edge is operational: we've built and scaled companies across European markets ourselves. We don't just provide capital. We help founders develop – as leaders and as businesses – through structured personal development, deep operational support, and access to a network that compounds over time. We also selectively invest in frontier technology – space, defense, quantum, and physical AI – where we see future relevance and exceptional people working on hard problems."
+    },
+    {
+      title: 'Frontier thinking & discovery',
+      text:
+        "Syntropy is a platform for frontier thinking and discovery. We bring together exceptional minds from science, entrepreneurship, philosophy, and the arts – not to network, but to think. Through curated formats – intimate gatherings, deep dialogues, and focused research collaborations – we create the conditions for ideas that wouldn't emerge anywhere else. We believe the most important questions don't belong to a single discipline. And we believe that the people who pursue them deserve a space that takes them seriously."
+    },
+    {
+      title: 'Relational influence',
+      text:
+        "Lorem ipsum dolor sit amet."
+    }
+  ];
+
+  let index = 0;
+
+  const applyItem = (i) => {
+    const item = items[i];
+    titleEl.textContent = item.title;
+    textEl.textContent = item.text;
+    labelGroups.forEach((g, idx) => {
+      g.classList.toggle('is-active', idx === i);
+    });
+  };
+
+  labelGroups.forEach((group, i) => {
+    group.addEventListener('click', () => {
+      index = i;
+      applyItem(index);
+    });
+  });
+
+  applyItem(index);
+
+  setInterval(() => {
+    index = (index + 1) % items.length;
+    applyItem(index);
+  }, 10000);
+})();
+
 // Fade-in on scroll
 const fadeObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -138,3 +236,72 @@ const fadeObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.15 });
 document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+// Team modal – click cards for detail view
+(() => {
+  const cards = Array.from(document.querySelectorAll('.team-card'));
+  const modal = document.getElementById('teamModal');
+  if (!cards.length || !modal) return;
+
+  const nameEl = document.getElementById('teamModalName');
+  const roleEl = document.getElementById('teamModalRole');
+  const bioEl = document.getElementById('teamModalBio');
+  const linkEl = document.getElementById('teamModalLinkedIn');
+
+  const teamData = [
+    {
+      name: 'Dr. Dennis Schmoltzi',
+      role: 'Founder',
+      bio: "Lorem ipsum dolor sit amet.",
+      linkedin: 'https://www.linkedin.com/in/dennis-schmoltzi-b61b21109/'
+    },
+    {
+      name: 'Manuel Müller',
+      role: 'Founder',
+      bio: "Lorem ipsum dolor sit amet.",
+      linkedin: 'https://www.linkedin.com/in/manuel-mueller-6300022b/'
+    },
+    {
+      name: 'Isabell Schastok',
+      role: 'Head of Family Office',
+      bio: "Lorem ipsum dolor sit amet.",
+      linkedin: 'https://www.linkedin.com/in/isabellschastok/'
+    },
+    {
+      name: 'Jonathan Georg',
+      role: 'Head of Family Office',
+      bio: "Lorem ipsum dolor sit amet.",
+      linkedin: 'https://www.linkedin.com/in/jonathan-georg'
+    }
+  ];
+
+  const openModal = (idx) => {
+    const data = teamData[idx];
+    if (!data) return;
+    nameEl.textContent = data.name;
+    roleEl.textContent = data.role;
+    bioEl.textContent = data.bio;
+    linkEl.href = data.linkedin;
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+  };
+
+  cards.forEach((card, idx) => {
+    card.addEventListener('click', () => openModal(idx));
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target.matches('[data-team-modal-close]')) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+})();
