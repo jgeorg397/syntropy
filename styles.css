@@ -809,8 +809,36 @@ body {
  margin-bottom: 0;
 }
 
+.about-mission-vision-inner {
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ gap: 48px;
+}
+
+.about-mission-vision-text {
+ flex: 1;
+ min-width: 0;
+}
+
+.about-hex-in-orange {
+ flex-shrink: 0;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.about-hex-in-orange .about-hex-svg {
+ width: 340px;
+ height: 340px;
+}
+
 .about-mission-vision .about-block-title:not(:first-child) {
  margin-top: 32px;
+}
+
+.about-hex-inner-content-only {
+ grid-template-columns: 1fr;
 }
 
 .about-block-title {
@@ -907,6 +935,14 @@ body {
  align-items: center;
 }
 
+.about-hex-inner.about-hex-inner-content-only {
+ grid-template-columns: 1fr;
+}
+
+.about-hex-inner-content-only .about-hex-content {
+ padding-left: 0;
+}
+
 .about-hex-visual {
  display: flex;
  justify-content: center;
@@ -991,18 +1027,57 @@ body {
  display: flex;
  flex-direction: column;
  align-items: flex-start;
+ width: 100%;
+ box-sizing: border-box;
+}
+
+.about-hex-content .about-mission-vision {
+ width: 100%;
+ box-sizing: border-box;
+}
+
+.about-what-we-build.about-mission-vision {
+ background: rgba(42,50,76,0.1);
+ border-left-color: #151926;
+}
+
+.about-what-we-build .about-block-title {
+ color: #151926;
 }
 
 .about-hex-buckets {
  display: flex;
- flex-direction: column;
- gap: 32px;
+ flex-direction: row;
+ gap: 24px;
  margin-top: 8px;
+ align-items: stretch;
 }
 
 .about-hex-bucket {
- padding: 16px 0;
- border-top: 1px solid rgba(0,0,0,0.06);
+ flex: 1;
+ min-width: 0;
+ display: flex;
+ flex-direction: column;
+ padding: 28px 24px;
+ border: 1px solid rgba(0,0,0,0.08);
+ border-radius: 10px;
+ background: rgba(255,255,255,0.6);
+ transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.about-hex-bucket:hover {
+ background: #151926;
+ border-color: #151926;
+}
+
+.about-hex-bucket:hover .about-hex-title,
+.about-hex-bucket:hover .about-hex-text {
+ color: #ffffff;
+}
+
+.about-hex-title,
+.about-hex-text {
+ transition: color 0.25s ease;
 }
 
 .about-hex-header-row {
@@ -1073,6 +1148,9 @@ body {
  }
  .about-hex-content {
   text-align: left;
+ }
+ .about-hex-buckets {
+  flex-direction: column;
  }
  .about-hex-svg {
   width: 300px;
@@ -1256,6 +1334,18 @@ body {
  }
  .about-mission-vision {
  padding: 28px 24px 32px;
+ }
+ .about-mission-vision-inner {
+ flex-direction: column;
+ align-items: stretch;
+ gap: 32px;
+ }
+ .about-hex-in-orange {
+ justify-content: center;
+ }
+ .about-hex-in-orange .about-hex-svg {
+ width: 280px;
+ height: 280px;
  }
  .about-mission-vision .about-block-title:not(:first-child) {
  margin-top: 28px;
