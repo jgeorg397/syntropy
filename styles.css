@@ -1801,9 +1801,24 @@ body {
 }
 
 /***** TEAM MEMBER PAGE *****/
+.team-member-page {
+ min-height: 100vh;
+ display: flex;
+ flex-direction: column;
+}
+
+.team-member-page .status-bar {
+ flex: 0 0 auto;
+}
+
 .team-member-page .team-member-main {
  padding: 120px 0 80px;
- min-height: 60vh;
+ flex: 1 0 auto;
+ min-height: 0;
+}
+
+.team-member-page .footer-section {
+ margin-top: auto;
 }
 
 .team-member-inner {
