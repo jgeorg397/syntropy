@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Syntropy – Family Office</title>
   <link rel="icon" type="image/png" href="assets/Favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,6 +18,7 @@
     <nav class="status-nav">
       <a href="#top">Home</a>
       <a href="#about">About</a>
+      <a href="#what-we-build">What We Build</a>
       <a href="#team">Team</a>
       <a href="#portfolio">Portfolio</a>
       <a href="#contact">Contact</a>
@@ -26,6 +29,7 @@
     <div class="mobile-menu">
       <a href="#top">Home</a>
       <a href="#about">About</a>
+      <a href="#what-we-build">What We Build</a>
       <a href="#team">Team</a>
       <a href="#portfolio">Portfolio</a>
       <a href="#contact">Contact</a>
@@ -34,6 +38,7 @@
   <main id="top">
     <!-- HERO SECTION -->
     <section class="hero" id="hero">
+      <div class="hero-photo" aria-hidden="true"></div>
       <div class="hero-bg-img" aria-hidden="true">
         <video class="circle-video-bg" autoplay muted loop playsinline id="circleVideo">
           <source src="assets/Circle Animation_2.mp4" type="video/mp4">
@@ -43,59 +48,37 @@
       <div class="site-container">
         <div class="container hero-content">
           <h1 class="hero-headline">We amplify <span class="hero-accent">growth.</span></h1>
-          <p class="hero-body">Syntropy is a founder-led family office. We architect the system where capital, knowledge, and relationships reinforce each other. For the founders, thinkers, and builders who enter our orbit – and for us. The result isn't additive. It compounds.</p>
+          <p class="hero-body">Syntropy is a Frankfurt-based, founder-led family office. We architect the system where capital, knowledge, and relationships reinforce each other. For the founders, thinkers, and builders who enter our orbit – and for us. The result isn't additive. It compounds.</p>
+          <a href="#about" class="hero-cta">
+            Discover our approach
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a>
         </div>
+      </div>
+      <div class="hero-scroll-indicator" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
       </div>
     </section>
 
     <!-- ABOUT US SECTION -->
     <section class="about fade-in" id="about">
       <div class="site-container">
-        <div class="container about-section">
-          <div class="about-header">
-            <h2 class="about-heading">About</h2>
-            <div class="about-accent-line"></div>
-          </div>
-          <div class="about-content">
-            <div class="about-mission-vision">
-              <div class="about-mission-vision-inner">
-                <div class="about-mission-vision-text">
-                  <h3 class="about-block-title">Vision</h3>
-                  <p class="about-block-text">
-                    To build a system where exceptional people and patient capital compound – into something larger than either could alone.
-                  </p>
-
-                  <h3 class="about-block-title">Our Story</h3>
-                  <p class="about-block-text">
-                    We built companies. We learned that financial returns provide freedom – but left alone, they just grow a number.
-                    They don't compound on their own. Knowledge reveals what others overlook. Relationships expand what one person alone
-                    could ever achieve. Most people pursue these forces separately. We believe they belong in one system. When capital,
-                    knowledge, and relationships reinforce each other, they stop adding up. They start compounding. Syntropy exists to build
-                    that system – for the founders, builders, and thinkers we work with. Through venture investments, spaces for discovery
-                    and frontier thinking, and communities of exceptional people whose ideas, knowledge, and capital compound together.
-                  </p>
-                </div>
-                <div class="about-hex-visual about-hex-in-orange">
-                  <svg class="about-hex-svg" viewBox="0 0 280 280" aria-hidden="true">
-                    <g class="about-hex-ring about-hex-ring-outer">
-                      <polygon points="140,20 232,67 232,161 140,208 48,161 48,67" />
-                      <circle class="about-hex-dot" cx="140" cy="20" r="4" />
-                      <circle class="about-hex-dot" cx="232" cy="67" r="3" />
-                    </g>
-                    <g class="about-hex-ring about-hex-ring-middle">
-                      <polygon points="140,50 210,90 210,170 140,210 70,170 70,90" />
-                      <circle class="about-hex-dot" cx="210" cy="90" r="4" />
-                      <circle class="about-hex-dot" cx="70" cy="170" r="3" />
-                    </g>
-                    <g class="about-hex-ring about-hex-ring-inner">
-                      <polygon points="140,80 185,110 185,170 140,200 95,170 95,110" />
-                      <circle class="about-hex-dot" cx="185" cy="110" r="3" />
-                      <circle class="about-hex-dot" cx="95" cy="170" r="4" />
-                    </g>
-                    <circle cx="140" cy="140" r="3" class="about-hex-center" />
-                  </svg>
-                </div>
+        <div class="container about-redesign">
+          <div class="about-redesign-grid">
+            <div class="about-redesign-left">
+              <div class="section-label">About</div>
+              <div class="section-divider"></div>
+              <h2 class="section-heading">Built by founders.<br>For founders.</h2>
+              <div class="about-vision-box">
+                <p>To build a system where exceptional people and patient capital compound – into something larger than either could alone.</p>
               </div>
+            </div>
+            <div class="about-redesign-right">
+              <p>We built companies. We learned that financial returns provide freedom – but left alone, they just grow a number. They do not compound on their own.</p>
+              <p>Knowledge reveals what others overlook. Relationships expand what one person alone could ever achieve. Most people pursue these forces separately. We believe they belong in one system.</p>
+              <p>When capital, knowledge, and relationships reinforce each other, they stop adding up. They start compounding. Syntropy exists to build that system – for the founders, builders, and thinkers we work with.</p>
+              <p>Through venture investments, spaces for discovery and frontier thinking, and communities of exceptional people whose ideas, knowledge, and capital compound together.</p>
             </div>
           </div>
         </div>
@@ -103,33 +86,35 @@
     </section>
 
     <!-- WHAT WE BUILD -->
-    <section class="about-hex-section">
+    <section class="about-hex-section" id="what-we-build">
       <div class="site-container">
-        <div class="container about-hex-inner about-hex-inner-content-only">
-          <div class="about-hex-content">
-            <div class="about-mission-vision about-what-we-build">
-              <h3 class="about-block-title">What we build</h3>
-              <div class="about-hex-buckets">
-                <div class="about-hex-bucket">
-                  <h4 class="about-hex-title">Financial engines</h4>
-                  <p class="about-hex-text">
-                    Syntropy invests in exceptional founders building category-defining consumer brands. We invest early – typically at Seed – and stay close.
-                    Our edge is operational: we've built and scaled companies across European markets ourselves. We don't just provide capital. We help founders
-                    develop – as leaders and as businesses – through structured personal development, deep operational support, and access to a network that
-                    compounds over time. We also selectively invest in frontier technology – space, defense, quantum, and physical AI – where we see future
-                    relevance and exceptional people working on hard problems.
-                  </p>
-                </div>
-                <div class="about-hex-bucket">
-                  <h4 class="about-hex-title">Frontier thinking & discovery</h4>
-                  <p class="about-hex-text">
-                    Syntropy is a platform for frontier thinking and discovery. We bring together exceptional minds from science, entrepreneurship, philosophy,
-                    and the arts – not to network, but to think. Through curated formats – intimate gatherings, deep dialogues, and focused research collaborations –
-                    we create the conditions for ideas that wouldn't emerge anywhere else. We believe the most important questions don't belong to a single
-                    discipline. And we believe that the people who pursue them deserve a space that takes them seriously.
-                  </p>
-                </div>
-              </div>
+        <div class="container what-we-build-inner">
+          <div class="what-we-build-head fade-in">
+            <div class="section-label">What We Build</div>
+            <div class="section-divider"></div>
+            <h2 class="section-heading">Two engines.<br>One compounding system.</h2>
+          </div>
+          <div class="about-hex-buckets">
+            <div class="about-hex-bucket fade-in" style="transition-delay: 0.1s;">
+              <div class="about-hex-bucket-number">01</div>
+              <h4 class="about-hex-title">Venture Capital & Incubation</h4>
+              <p class="about-hex-text">
+                Syntropy invests in exceptional founders building category-defining consumer brands. We invest early – typically at Seed – and stay close.
+                Our edge is operational: we've built and scaled companies across European markets ourselves. We don't just provide capital. We help founders
+                develop – as leaders and as businesses – through structured personal development, deep operational support, and access to a network that
+                compounds over time. We also selectively invest in frontier technology – space, defense, quantum, and physical AI – where we see future
+                relevance and exceptional people working on hard problems.
+              </p>
+            </div>
+            <div class="about-hex-bucket fade-in" style="transition-delay: 0.25s;">
+              <div class="about-hex-bucket-number">02</div>
+              <h4 class="about-hex-title">Frontier Thinking & Discovery</h4>
+              <p class="about-hex-text">
+                Syntropy is a platform for frontier thinking and discovery. We bring together exceptional minds from science, entrepreneurship, philosophy,
+                and the arts – not to network, but to think. Through curated formats – intimate gatherings, deep dialogues, and focused research collaborations –
+                we create the conditions for ideas that wouldn't emerge anywhere else. We believe the most important questions don't belong to a single
+                discipline. And we believe that the people who pursue them deserve a space that takes them seriously.
+              </p>
             </div>
           </div>
         </div>
@@ -141,8 +126,9 @@
       <div class="site-container">
         <div class="container team-section">
           <div class="team-header">
-            <h2 class="team-heading">Team</h2>
-            <div class="team-accent-line"></div>
+            <div class="section-label">Team</div>
+            <div class="section-divider"></div>
+            <h2 class="section-heading team-heading">The people behind<br>the system.</h2>
           </div>
           <div class="team-cards">
             <a href="team/dennis.html" class="team-card">
@@ -152,9 +138,6 @@
               <div class="team-card-info">
                 <h3 class="team-name">Dr. Dennis Schmoltzi</h3>
                 <p class="team-role">Founder</p>
-                <span class="team-linkedin" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </span>
               </div>
             </a>
             <a href="team/manuel.html" class="team-card">
@@ -164,9 +147,6 @@
               <div class="team-card-info">
                 <h3 class="team-name">Manuel Müller</h3>
                 <p class="team-role">Founder</p>
-                <span class="team-linkedin" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </span>
               </div>
             </a>
             <a href="team/isabell.html" class="team-card">
@@ -176,9 +156,6 @@
               <div class="team-card-info">
                 <h3 class="team-name">Isabell Schastok</h3>
                 <p class="team-role">Head of Family Office</p>
-                <span class="team-linkedin" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </span>
               </div>
             </a>
             <a href="team/jonathan.html" class="team-card">
@@ -188,9 +165,6 @@
               <div class="team-card-info">
                 <h3 class="team-name">Jonathan Georg</h3>
                 <p class="team-role">Head of Family Office</p>
-                <span class="team-linkedin" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </span>
               </div>
             </a>
           </div>
@@ -203,8 +177,9 @@
       <div class="site-container">
         <div class="container portfolio-section">
           <div class="portfolio-header">
-            <h2 class="portfolio-heading">Portfolio</h2>
-            <div class="portfolio-accent-line"></div>
+            <div class="section-label">Portfolio</div>
+            <div class="section-divider"></div>
+            <h2 class="section-heading portfolio-heading">Founders we back.</h2>
           </div>
         </div>
       </div>
@@ -249,21 +224,30 @@
 
     <!-- CONTACT / FINAL CTA SECTION -->
     <section class="contact fade-in" id="contact">
-      <div class="contact-overlay" aria-hidden="true"></div>
-      <div class="contact-video-wrap" aria-hidden="true">
-        <video class="contact-video" autoplay muted loop playsinline>
-          <source src="assets/Circle Animation_2.mp4" type="video/mp4">
-        </video>
-      </div>
       <div class="site-container">
         <div class="container contact-inner">
-          <h2 class="contact-heading-main">Let's build something enduring.</h2>
-          <p class="contact-sub">
-            We'd love to hear from you – whether you're a founder, an investor, or simply someone who thinks differently.
-          </p>
-          <p class="contact-email">
-            <a href="mailto:hello@syntropy.eu" class="contact-email-link">hello@syntropy.eu</a>
-          </p>
+          <div class="contact-left">
+            <div class="section-label">Contact</div>
+            <div class="section-divider"></div>
+            <h2 class="section-heading contact-heading-main">Let's build something<br><em>enduring.</em></h2>
+            <p class="contact-sub">
+              We'd love to hear from you – whether you're a founder, an investor, or simply someone who thinks differently.
+            </p>
+            <a href="mailto:hello@syntropy.eu" class="contact-email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+              hello@syntropy.eu
+            </a>
+          </div>
+          <div class="contact-right" aria-hidden="true">
+            <div class="contact-visual">
+              <div class="contact-visual-inner"></div>
+              <div class="contact-visual-core">
+                <svg class="contact-visual-hex" viewBox="0 0 40 46" fill="none" aria-hidden="true">
+                  <path d="M20 0L38.66 10.78V32.34L20 43.12L1.34 32.34V10.78L20 0Z" fill="currentColor" opacity="0.5"/>
+                </svg>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
