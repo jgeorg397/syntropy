@@ -87,6 +87,8 @@ html {
  align-items: flex-end;
  align-self: flex-end;
  overflow: visible;
+ position: relative;
+ z-index: 2;
 }
 .status-brand:visited {
  color: var(--white);
@@ -3251,5 +3253,71 @@ body.legal-page .footer-link:hover {
  }
  .contact-right {
   display: none;
+ }
+}
+
+/* ===== Final nav + spacing overrides ===== */
+.status-bar {
+ position: fixed !important;
+ top: 0;
+ left: 0;
+ right: 0;
+ background: rgba(255,255,255,0.9);
+ box-shadow: 0 1px 0 rgba(42,50,76,0.1);
+ backdrop-filter: blur(14px);
+ -webkit-backdrop-filter: blur(14px);
+ transition: background 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease, transform 0.28s cubic-bezier(.4,0,.2,1), opacity 0.18s cubic-bezier(.4,0,.2,1);
+}
+.status-bar::after {
+ content: '';
+ position: absolute;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ height: 1px;
+ background: transparent;
+ pointer-events: none;
+ z-index: 1;
+}
+.status-bar.is-scrolled {
+ background: rgba(255,255,255,0.9);
+ box-shadow: 0 1px 0 rgba(42,50,76,0.1);
+ backdrop-filter: blur(14px);
+ -webkit-backdrop-filter: blur(14px);
+}
+.status-bar.is-scrolled::after {
+ background: transparent;
+}
+.status-bar .status-nav a {
+ color: #2A324C;
+}
+.status-bar.is-scrolled .status-nav a {
+ color: #2A324C;
+}
+.status-bar .status-nav a:hover,
+.status-bar.is-scrolled .status-nav a:hover {
+ color: var(--accent);
+}
+
+.about,
+.about-hex-section,
+.team,
+.portfolio,
+.contact {
+ padding-top: 80px;
+ padding-bottom: 80px;
+}
+.portfolio {
+ padding-bottom: 0;
+}
+
+@media (max-width: 900px) {
+ .about,
+ .about-hex-section,
+ .team,
+ .portfolio,
+ .contact {
+  padding-top: 64px;
+  padding-bottom: 64px;
  }
 }

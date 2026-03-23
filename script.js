@@ -151,6 +151,7 @@ if (mobileMenuBtn && mobileMenu) {
     }
 
     const y = window.scrollY || 0;
+    statusBar.classList.toggle('is-scrolled', y > 50);
     const diff = y - lastScrollY;
     if (Math.abs(diff) < DELTA) return;
 
@@ -173,6 +174,9 @@ if (mobileMenuBtn && mobileMenu) {
     },
     { passive: true }
   );
+
+  // initialize state on load
+  update();
 })();
 
 // No JS needed for the static "What we build" buckets
