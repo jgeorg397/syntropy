@@ -2334,9 +2334,9 @@ a, button, input, select, textarea {
  .hero h1,
  .hero-headline,
  .hero-tagline {
- font-size: clamp(1.9rem, 8.6vw, 2.6rem);
+ font-size: clamp(1.6rem, 7.6vw, 2.2rem);
  line-height: 1.05;
- white-space: normal;
+ white-space: nowrap;
  }
  .hero .hero-body {
   font-size: 1.18rem;
@@ -2397,8 +2397,8 @@ a, button, input, select, textarea {
 @media (max-width: 900px) {
   .hero h1.hero-headline,
   .hero .hero-headline {
-    white-space: normal !important;
-    font-size: clamp(2.35rem, 10.4vw, 3.35rem) !important;
+    white-space: nowrap !important;
+    font-size: clamp(2.0rem, 8.8vw, 2.9rem) !important;
     line-height: 1.05;
   }
 
@@ -2406,12 +2406,6 @@ a, button, input, select, textarea {
     font-size: 1.26rem;
   }
 
-  /* Prevent "growth." flicker on mobile by disabling the accent pop */
-  .hero-content .hero-headline .hero-accent {
-    opacity: 1 !important;
-    transform: none !important;
-    animation: none !important;
-  }
 }
 .footer-section .footer-inner {
  display: flex;
