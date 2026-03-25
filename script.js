@@ -1,27 +1,5 @@
 // Handle pre-selection of form options via data attributes
 document.addEventListener('DOMContentLoaded', () => {
-  // Auto-insert ages for team bios (e.g., "Dennis (XX)")
-  const ageNodes = document.querySelectorAll('.js-age[data-birthdate]');
-  if (ageNodes.length) {
-    const now = new Date();
-    ageNodes.forEach((node) => {
-      const birthdateStr = node.getAttribute('data-birthdate');
-      const name = node.getAttribute('data-name') || node.textContent || '';
-      const birth = birthdateStr ? new Date(birthdateStr) : null;
-      if (!birth || Number.isNaN(birth.getTime())) return;
-
-      let age = now.getFullYear() - birth.getFullYear();
-      const hasHadBirthdayThisYear =
-        now.getMonth() > birth.getMonth() ||
-        (now.getMonth() === birth.getMonth() && now.getDate() >= birth.getDate());
-      if (!hasHadBirthdayThisYear) age -= 1;
-
-      if (age >= 0 && age < 130) {
-        node.textContent = `${name.trim()} (${age})`;
-      }
-    });
-  }
-
   document.addEventListener('click', (e) => {
     if (e.target.matches('a[data-preselect]')) {
       const preselectValue = e.target.getAttribute('data-preselect');
