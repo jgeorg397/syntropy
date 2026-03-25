@@ -1916,7 +1916,19 @@ h1, h2, h3 {
  }
 
 .team-member-photo-linkedin {
- display: none;
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background: rgba(21,25,38,0.5);
+  text-decoration: none;
+  z-index: 2;
 }
 
 .team-member-right {
@@ -1952,21 +1964,6 @@ h1, h2, h3 {
  }
  .team-member-linkedin {
   display: none;
- }
- .team-member-photo-linkedin {
-  position: absolute;
-  right: 12px;
-  bottom: 12px;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  background: rgba(21,25,38,0.5);
-  text-decoration: none;
-  z-index: 2;
  }
  .team-member-photo-linkedin svg {
   width: 18px;
@@ -2329,8 +2326,9 @@ a, button, input, select, textarea {
  .hero h1,
  .hero-headline,
  .hero-tagline {
- font-size: 2.4rem;
- line-height: 1.1;
+ font-size: clamp(1.9rem, 8.6vw, 2.6rem);
+ line-height: 1.05;
+ white-space: nowrap;
  }
  .hero-sub {
  font-size: 1.18rem;
@@ -2382,6 +2380,20 @@ a, button, input, select, textarea {
  margin-top: 0;
  position: relative;
  z-index: 0;
+}
+
+/* Keep hero headline on a single line on mobile/tablet widths */
+@media (max-width: 900px) {
+  .hero h1.hero-headline,
+  .hero .hero-headline {
+    white-space: nowrap !important;
+    font-size: clamp(2.75rem, 12.2vw, 3.85rem) !important;
+    line-height: 1.05;
+  }
+
+  .hero .hero-body {
+    font-size: 1.26rem;
+  }
 }
 .footer-section .footer-inner {
  display: flex;
@@ -2849,6 +2861,29 @@ body.legal-page .footer-link:hover {
  font-size: 1.08rem;
  line-height: 1.75;
 }
+
+@media (min-width: 900px) {
+  .hero .container.hero-content {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 48px !important;
+    padding-right: 48px !important;
+  }
+
+  .hero-headline,
+  .hero h1.hero-headline {
+    font-size: clamp(4.6rem, 7.7vw, 7.1rem) !important;
+    line-height: 1.05;
+  }
+
+  .hero .hero-body {
+    font-size: 1.42rem;
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 .hero .hero-body {
  color: #ffffff !important;
 }
@@ -2891,6 +2926,8 @@ body.legal-page .footer-link:hover {
  align-items: center;
  gap: 8px;
  z-index: 3;
+  text-decoration: none;
+  cursor: pointer;
 }
 .hero-scroll-indicator span {
  font-size: 11px;
