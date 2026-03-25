@@ -2334,7 +2334,7 @@ a, button, input, select, textarea {
  .hero h1,
  .hero-headline,
  .hero-tagline {
- font-size: clamp(1.6rem, 7.6vw, 2.2rem);
+ font-size: clamp(1.75rem, 8.2vw, 2.45rem);
  line-height: 1.05;
  white-space: nowrap;
  }
@@ -2398,7 +2398,7 @@ a, button, input, select, textarea {
   .hero h1.hero-headline,
   .hero .hero-headline {
     white-space: nowrap !important;
-    font-size: clamp(2.0rem, 8.8vw, 2.9rem) !important;
+    font-size: clamp(2.25rem, 9.2vw, 3.15rem) !important;
     line-height: 1.05;
   }
 
