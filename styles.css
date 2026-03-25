@@ -3831,3 +3831,16 @@ body.legal-page .footer-link:hover {
   padding-bottom: 64px;
  }
 }
+
+@media (max-width: 600px) {
+ .portfolio-ticker-wrap {
+  padding-top: 22px;
+  padding-bottom: 20px;
+ }
+ .portfolio {
+  padding-bottom: 28px;
+ }
+ .contact {
+  padding-bottom: 36px;
+ }
+}
