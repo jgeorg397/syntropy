@@ -3022,7 +3022,7 @@ body.legal-page .footer-link:hover {
  padding: 14px 32px;
  border: 1px solid rgba(255, 255, 255, 0.5);
  border-radius: 4px;
- background: rgba(1, 16, 39, 0.62);
+ background: rgba(0, 0, 0, 0.52);
  color: #ffffff;
  font-family: var(--font-body);
  font-size: 14px;
@@ -3035,7 +3035,7 @@ body.legal-page .footer-link:hover {
 }
 
 .about-founder-pill:hover {
- background: rgba(1, 16, 39, 0.78);
+ background: rgba(0, 0, 0, 0.68);
  border-color: rgba(255, 255, 255, 0.75);
  color: #ffffff;
 }
