@@ -66,7 +66,98 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const circleVideo = document.getElementById('circleVideo');
   if (circleVideo) circleVideo.playbackRate = 0.75;
+
+  // About image strip: count-up stats (first time in view)
+  const statsStrip = document.querySelector('.about-image-strip-stats');
+  const statNodes = statsStrip ? statsStrip.querySelectorAll('.js-stat-animated') : [];
+  if (statsStrip && statNodes.length) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const durationMs = 1400;
+
+    const formatStat = (el, n) => {
+      const v = Math.round(n);
+      if (el.dataset.group === 'true') return v.toLocaleString('en-US');
+      return String(v);
+    };
+
+    let ran = false;
+    const run = () => {
+      if (ran) return;
+      ran = true;
+      const items = Array.from(statNodes).map((el) => ({
+        el,
+        end: Number(el.dataset.target)
+      }));
+      if (items.some((x) => Number.isNaN(x.end))) return;
+
+      if (reduceMotion) {
+        items.forEach(({ el, end }) => {
+          el.textContent = formatStat(el, end);
+        });
+        return;
+      }
+
+      const start = performance.now();
+      const tick = (now) => {
+        const t = Math.min(1, (now - start) / durationMs);
+        const eased = 1 - (1 - t) ** 3;
+        items.forEach(({ el, end }) => {
+          el.textContent = formatStat(el, end * eased);
+        });
+        if (t < 1) requestAnimationFrame(tick);
+        else items.forEach(({ el, end }) => { el.textContent = formatStat(el, end); });
+      };
+      requestAnimationFrame(tick);
+    };
+
+    const io = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            run();
+            obs.disconnect();
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -40px 0px' }
+    );
+    io.observe(statsStrip);
+  }
 });
+
+/** #about: scroll so the hero is fully gone and the strip header clears the fixed nav (scroll-margin would re-expose the hero). */
+function getAboutAnchorScrollTop() {
+  const target = document.querySelector('#about');
+  if (!target) return null;
+  const hero = document.querySelector('.hero');
+  const heroEnd = hero ? hero.offsetTop + hero.offsetHeight : 0;
+  const statusBar = document.querySelector('.status-bar');
+  const navH = statusBar ? statusBar.getBoundingClientRect().height : 96;
+  const headerEl = target.querySelector('.about-image-strip-header');
+  const focusEl = headerEl || target;
+  const yDoc = focusEl.getBoundingClientRect().top + window.scrollY;
+  const pad = 16;
+  return Math.max(yDoc - navH - pad, heroEnd);
+}
+
+function scrollToAboutAnchor(smooth) {
+  const y = getAboutAnchorScrollTop();
+  if (y == null) return;
+  window.scrollTo({ top: y, behavior: smooth ? 'smooth' : 'auto' });
+}
+
+function applyAboutHashScroll() {
+  if (window.location.hash !== '#about') return;
+  const y = getAboutAnchorScrollTop();
+  if (y != null) window.scrollTo(0, y);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.location.hash !== '#about') return;
+  requestAnimationFrame(() => requestAnimationFrame(applyAboutHashScroll));
+});
+
+window.addEventListener('load', applyAboutHashScroll);
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -76,6 +167,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     if (anchorPart === '#top' || anchorPart === '#') {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    if (anchorPart === '#about') {
+      e.preventDefault();
+      scrollToAboutAnchor(true);
       return;
     }
     const target = document.querySelector(anchorPart);
