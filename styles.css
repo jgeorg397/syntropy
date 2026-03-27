@@ -2851,7 +2851,7 @@ body.legal-page .footer-link:hover {
  background: transparent;
 }
 .hero-overlay {
- background: rgba(21,25,38,0.30);
+ background: rgba(16, 52, 106, 0.20);
  z-index: 1;
 }
 .circle-video-bg {
@@ -2914,12 +2914,13 @@ body.legal-page .footer-link:hover {
 }
 
 @media (max-width: 600px) {
-  /* Final mobile hero alignment: centered + same side padding as page */
+  /* Final mobile hero alignment: left + same side padding as page */
   .hero .container.hero-content {
     padding-left: 26px !important;
     padding-right: 26px !important;
-    text-align: center !important;
-    align-items: center;
+    text-align: left !important;
+    align-items: flex-start;
+    transform: translateY(-22px);
   }
 
   /* Override larger <=900px headline clamp so it does not hug/overflow edges */
@@ -2932,9 +2933,9 @@ body.legal-page .footer-link:hover {
 
   .hero .hero-body,
   .hero .hero-cta {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
   }
 }
 
