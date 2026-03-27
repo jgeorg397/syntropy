@@ -2842,7 +2842,7 @@ body.legal-page .footer-link:hover {
  background: transparent;
 }
 .hero-overlay {
- background: rgba(21,25,38,0.40);
+ background: rgba(21,25,38,0.30);
  z-index: 1;
 }
 .circle-video-bg {
@@ -2903,6 +2903,24 @@ body.legal-page .footer-link:hover {
 .hero .hero-body {
  color: #ffffff !important;
 }
+
+@media (max-width: 600px) {
+  /* Final mobile hero alignment: centered + same side padding as page */
+  .hero .container.hero-content {
+    padding-left: 26px !important;
+    padding-right: 26px !important;
+    text-align: center !important;
+    align-items: center;
+  }
+
+  .hero .hero-body,
+  .hero .hero-cta {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+}
+
 .hero .hero-cta {
  display: inline-flex;
  align-items: center;
@@ -2944,6 +2962,12 @@ body.legal-page .footer-link:hover {
  z-index: 3;
   text-decoration: none;
   cursor: pointer;
+}
+
+@media (max-width: 600px) {
+ .hero-scroll-indicator {
+  bottom: calc(72px + env(safe-area-inset-bottom));
+ }
 }
 .hero-scroll-indicator span {
  font-size: 11px;
