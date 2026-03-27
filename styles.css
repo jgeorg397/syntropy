@@ -3973,27 +3973,25 @@ body.legal-page .footer-link:hover {
 @media (max-width: 600px) {
  .status-bar {
   z-index: 2200;
- }
-
- .status-bar:not(.is-scrolled) {
-  background: transparent !important;
-  box-shadow: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
- }
-
- .status-bar.is-scrolled {
   background: rgba(255,255,255,0.9) !important;
   box-shadow: 0 1px 0 rgba(42,50,76,0.1);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
  }
 
- .status-bar:not(.is-scrolled)::after {
-  background: rgba(255,255,255,0.7);
+ /* Transparent state only on home hero top */
+ .home-page .status-bar:not(.is-scrolled) {
+  background: transparent !important;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
  }
- .status-bar.is-scrolled::after {
+
+ .status-bar::after {
   background: rgba(42,50,76,0.12);
+ }
+ .home-page .status-bar:not(.is-scrolled)::after {
+  background: rgba(255,255,255,0.7);
  }
 
  .status-brand {
@@ -4004,14 +4002,14 @@ body.legal-page .footer-link:hover {
  }
 
  .logo-image {
-  content: url('assets/Logo_Text_White.png');
+  content: url('assets/Logo_Text.png');
   height: 42px;
   width: auto;
   margin-bottom: 0;
   filter: none;
  }
- .status-bar.is-scrolled .logo-image {
-  content: url('assets/Logo_Text.png');
+ .home-page .status-bar:not(.is-scrolled) .logo-image {
+  content: url('assets/Logo_Text_White.png');
  }
  .status-bar.menu-open .logo-image {
   content: url('assets/Logo_Text.png');
@@ -4028,12 +4026,12 @@ body.legal-page .footer-link:hover {
  .menu-icon,
  .menu-icon::before,
  .menu-icon::after {
-  background: #ffffff;
- }
- .status-bar.is-scrolled .menu-icon,
- .status-bar.is-scrolled .menu-icon::before,
- .status-bar.is-scrolled .menu-icon::after {
   background: #2A324C;
+ }
+ .home-page .status-bar:not(.is-scrolled) .menu-icon,
+ .home-page .status-bar:not(.is-scrolled) .menu-icon::before,
+ .home-page .status-bar:not(.is-scrolled) .menu-icon::after {
+  background: #ffffff;
  }
 
  .mobile-menu-btn.is-open .menu-icon,
