@@ -3037,8 +3037,9 @@ body.legal-page .footer-link:hover {
 }
 
 .about-founder-pills {
- display: flex;
- flex-wrap: wrap;
+ display: grid;
+ grid-auto-flow: column;
+ grid-auto-columns: 1fr;
  justify-content: center;
  align-items: center;
  gap: 12px 16px;
@@ -3051,6 +3052,7 @@ body.legal-page .footer-link:hover {
  display: inline-flex;
  align-items: center;
  justify-content: center;
+ width: 100%;
  padding: 14px 32px;
  border: 1px solid rgba(255, 255, 255, 0.5);
  border-radius: 4px;
@@ -3064,6 +3066,13 @@ body.legal-page .footer-link:hover {
  text-align: center;
  text-decoration: none;
  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+@media (max-width: 420px) {
+ .about-founder-pills {
+  grid-auto-flow: row;
+  grid-auto-columns: unset;
+ }
 }
 
 .about-founder-pill:hover {
@@ -3209,6 +3218,34 @@ body.legal-page .footer-link:hover {
  justify-items: center;
  text-align: center;
  min-width: 0;
+}
+
+/* Desktop: center KPI middle block on true page center.
+   Brand sits left without shifting the 3-column KPI distribution. */
+@media (min-width: 901px) {
+ /* Deterministic 5-col grid: [reserve][left][center][right][reserve]
+    so the center KPI is mathematically centered. */
+ .about-image-strip-stats-row {
+  --about-stats-side-reserve: 220px;
+  display: grid;
+  grid-template-columns: var(--about-stats-side-reserve) 1fr 1fr 1fr var(--about-stats-side-reserve);
+  align-items: center;
+  gap: 28px 40px;
+ }
+
+ .about-image-strip-stats-brand {
+  grid-column: 1;
+  justify-self: center;
+ }
+
+ /* Let the 3 KPI blocks participate directly in the 5-col grid */
+ .about-image-strip-stats-numbers {
+  display: contents;
+ }
+
+ .about-image-strip-stats-numbers .about-stat:nth-child(1) { grid-column: 2; }
+ .about-image-strip-stats-numbers .about-stat:nth-child(2) { grid-column: 3; }
+ .about-image-strip-stats-numbers .about-stat:nth-child(3) { grid-column: 4; }
 }
 
 .about-stat {
