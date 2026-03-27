@@ -94,7 +94,7 @@ html {
  color: var(--white);
 }
 .status-brand:hover {
- opacity: 0.9;
+ opacity: 1;
 }
 
 .logo-image {
@@ -2922,6 +2922,14 @@ body.legal-page .footer-link:hover {
     align-items: center;
   }
 
+  /* Override larger <=900px headline clamp so it does not hug/overflow edges */
+  .hero h1.hero-headline,
+  .hero .hero-headline {
+    font-size: clamp(2.05rem, 8.9vw, 2.85rem) !important;
+    line-height: 1.05;
+    white-space: nowrap !important;
+  }
+
   .hero .hero-body,
   .hero .hero-cta {
     margin-left: auto;
@@ -3955,5 +3963,81 @@ body.legal-page .footer-link:hover {
  }
  .contact {
   padding-bottom: 36px;
+ }
+}
+
+/* Mobile nav behavior:
+   - top of hero (not scrolled): transparent + white logo/lines
+   - scrolled: white nav + dark logo/lines */
+@media (max-width: 600px) {
+ .status-bar {
+  z-index: 2200;
+ }
+
+ .status-bar:not(.is-scrolled) {
+  background: transparent !important;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+ }
+
+ .status-bar.is-scrolled {
+  background: rgba(255,255,255,0.9) !important;
+  box-shadow: 0 1px 0 rgba(42,50,76,0.1);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+ }
+
+ .status-bar:not(.is-scrolled)::after {
+  background: rgba(255,255,255,0.7);
+ }
+ .status-bar.is-scrolled::after {
+  background: rgba(42,50,76,0.12);
+ }
+
+ .status-brand {
+  position: relative;
+  z-index: 2201;
+  align-items: center;
+  align-self: center;
+ }
+
+ .logo-image {
+  content: url('assets/Logo_Text_White.png');
+  height: 42px;
+  width: auto;
+  margin-bottom: 0;
+  filter: none;
+ }
+ .status-bar.is-scrolled .logo-image {
+  content: url('assets/Logo_Text.png');
+ }
+ .status-bar.menu-open .logo-image {
+  content: url('assets/Logo_Text.png');
+ }
+
+ .mobile-menu {
+  z-index: 2000;
+ }
+
+ .mobile-menu-btn {
+  z-index: 2202;
+ }
+
+ .menu-icon,
+ .menu-icon::before,
+ .menu-icon::after {
+  background: #ffffff;
+ }
+ .status-bar.is-scrolled .menu-icon,
+ .status-bar.is-scrolled .menu-icon::before,
+ .status-bar.is-scrolled .menu-icon::after {
+  background: #2A324C;
+ }
+
+ .mobile-menu-btn.is-open .menu-icon,
+ .mobile-menu-btn.is-open .menu-icon::before,
+ .mobile-menu-btn.is-open .menu-icon::after {
+  background: #2A324C;
  }
 }

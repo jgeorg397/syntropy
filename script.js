@@ -210,16 +210,30 @@ if (contactForm) {
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const mobileMenu = document.querySelector('.mobile-menu');
 if (mobileMenuBtn && mobileMenu) {
+  const statusBar = document.querySelector('.status-bar');
+  const syncMenuButtonState = () => {
+    const isOpen = mobileMenu.classList.contains('open');
+    mobileMenuBtn.classList.toggle('is-open', isOpen);
+    if (statusBar) statusBar.classList.toggle('menu-open', isOpen);
+  };
+
   mobileMenuBtn.addEventListener('click', function (e) {
     e.stopPropagation();
     mobileMenu.classList.toggle('open');
+    syncMenuButtonState();
   });
+
   mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      syncMenuButtonState();
+    });
   });
+
   document.addEventListener('click', function (e) {
     if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
       mobileMenu.classList.remove('open');
+      syncMenuButtonState();
     }
   });
 }
