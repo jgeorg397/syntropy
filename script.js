@@ -45,6 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const circleVideo = document.getElementById('circleVideo');
   if (circleVideo) circleVideo.playbackRate = 0.75;
 
+  const heroPhotoVideo = document.querySelector('.hero-photo-video');
+  if (heroPhotoVideo) heroPhotoVideo.playbackRate = 0.5;
+
   // About image strip: count-up stats (first time in view)
   const statsStrip = document.querySelector('.about-image-strip-stats');
   const statNodes = statsStrip ? statsStrip.querySelectorAll('.js-stat-animated') : [];
