@@ -27,10 +27,7 @@ const observer = new IntersectionObserver((entries) => {
         const aboutFlex = entry.target.querySelector('.about-flex');
         if (aboutFlex) setTimeout(() => aboutFlex.classList.add('visible'), 300);
       }
-      if (entry.target.classList.contains('contact')) {
-        const contactInner = entry.target.querySelector('.contact-inner');
-        if (contactInner) setTimeout(() => contactInner.classList.add('visible'), 200);
-      }
+      // Contact section is intentionally not animated.
     }
   });
 }, observerOptions);

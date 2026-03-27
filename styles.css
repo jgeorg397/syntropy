@@ -98,10 +98,10 @@ html {
 }
 
 .logo-image {
- height: 120px;
+ height: 136px;
  width: auto;
  display: block;
- margin-bottom: -40px;
+ margin-bottom: -48px;
  vertical-align: bottom;
  filter:
   drop-shadow(0.8px 0 0 rgba(255,255,255,0.55))
@@ -112,14 +112,14 @@ html {
 }
 @media (max-width: 900px) {
  .logo-image {
- height: 98px;
- margin-bottom: -30px;
+ height: 112px;
+ margin-bottom: -36px;
  }
 }
 @media (max-width: 600px) {
  .logo-image {
- height: 86px;
- margin-bottom: -25px;
+ height: 118px;
+ margin-bottom: -38px;
  }
 }
 
@@ -2210,15 +2210,11 @@ h1, h2, h3 {
  transform: translateY(0);
 }
 
-/* Contact form animation */
+/* Contact form animation (disabled) */
 .contact-inner {
- opacity: 0;
- transform: translateY(30px);
- transition: all 0.8s cubic-bezier(.4,0,.2,1);
-}
-.contact-inner.visible {
  opacity: 1;
- transform: translateY(0);
+ transform: none;
+ transition: none;
 }
 
 /* Image hover animation */
@@ -2363,16 +2359,16 @@ a, button, input, select, textarea {
  .about-logo { padding: 6px 10px; font-size: 0.93rem; }
  .contact-form { max-width: 100%; }
  .hero-content {
- padding-left: 20px;
- padding-right: 20px;
+ padding-left: 26px;
+ padding-right: 26px;
  text-align: left;
  }
  .hero-body {
  margin-right: 0;
  }
  .site-container {
- padding-left: 20px;
- padding-right: 20px;
+ padding-left: 26px;
+ padding-right: 26px;
  }
 } 
 
@@ -2846,7 +2842,7 @@ body.legal-page .footer-link:hover {
  background: transparent;
 }
 .hero-overlay {
- background: rgba(21,25,38,0.72);
+ background: rgba(21,25,38,0.40);
  z-index: 1;
 }
 .circle-video-bg {
@@ -3076,7 +3072,8 @@ body.legal-page .footer-link:hover {
  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 
-@media (max-width: 420px) {
+/* Only stack on very small screens; iPhones should stay 2-up */
+@media (max-width: 340px) {
  .about-founder-pills {
   grid-auto-flow: row;
   grid-auto-columns: unset;
@@ -3349,7 +3346,8 @@ body.legal-page .footer-link:hover {
   bottom: 16px;
  }
  .about-founder-pill {
-  padding: 12px 22px;
+  /* keep font size, reduce horizontal padding so both fit side-by-side */
+  padding: 12px 14px;
   font-size: 13px;
  }
  .about-image-strip-heading {
@@ -3853,6 +3851,7 @@ body.legal-page .footer-link:hover {
  top: 0;
  left: 0;
  right: 0;
+ /* Always use the "scrolled" (white/blur) nav styling */
  background: rgba(255,255,255,0.9);
  box-shadow: 0 1px 0 rgba(42,50,76,0.1);
  backdrop-filter: blur(14px);
@@ -3866,7 +3865,7 @@ body.legal-page .footer-link:hover {
  right: 0;
  bottom: 0;
  height: 1px;
- background: transparent;
+ background: rgba(42,50,76,0.12);
  pointer-events: none;
  z-index: 1;
 }
@@ -3877,7 +3876,7 @@ body.legal-page .footer-link:hover {
  -webkit-backdrop-filter: blur(14px);
 }
 .status-bar.is-scrolled::after {
- background: transparent;
+ background: rgba(42,50,76,0.12);
 }
 .status-bar .status-nav a {
  color: #2A324C;
