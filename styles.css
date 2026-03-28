@@ -2829,6 +2829,24 @@ body.legal-page .footer-link:hover {
  position: relative;
  overflow: hidden;
 }
+/* Composite still (Frankfurt + overlay + circle) — same object-fit / crop as videos */
+.hero-poster-layer {
+ position: absolute;
+ inset: 0;
+ z-index: 0;
+ pointer-events: none;
+ overflow: hidden;
+ transition: opacity 0.55s ease, visibility 0.55s ease;
+}
+.hero-poster-img {
+ position: absolute;
+ inset: 0;
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+ object-position: center center;
+ display: block;
+}
 .hero-photo {
  position: absolute;
  inset: 0;
@@ -2844,6 +2862,13 @@ body.legal-page .footer-link:hover {
  object-fit: cover;
  object-position: center center;
  filter: grayscale(100%) brightness(0.55);
+ transition: opacity 0.55s ease;
+}
+.hero:not(.hero-media-ready) .hero-photo-video {
+ opacity: 0;
+}
+.hero.hero-media-ready .hero-photo-video {
+ opacity: 1;
 }
 .hero-bg-img {
  position: absolute;
@@ -2853,12 +2878,37 @@ body.legal-page .footer-link:hover {
  background: transparent;
 }
 .hero-overlay {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
  background: rgba(16, 52, 106, 0.20);
  z-index: 1;
+ pointer-events: none;
 }
 .circle-video-bg {
  opacity: 0.3;
  filter: hue-rotate(170deg) saturate(140%) brightness(0.5);
+ transition: opacity 0.55s ease;
+}
+.hero:not(.hero-media-ready) .circle-video-bg {
+ opacity: 0;
+}
+.hero.hero-media-ready .circle-video-bg {
+ opacity: 0.3;
+}
+.hero:not(.hero-media-ready) .hero-overlay {
+ opacity: 0;
+ transition: opacity 0.55s ease;
+}
+.hero.hero-media-ready .hero-overlay {
+ opacity: 1;
+ transition: opacity 0.55s ease;
+}
+.hero.hero-media-ready .hero-poster-layer {
+ opacity: 0;
+ visibility: hidden;
 }
 .hero-content {
  position: relative;

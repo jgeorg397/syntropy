@@ -60,6 +60,44 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(boostCircleLoad, 3500);
   }
 
+  const heroSection = document.querySelector('.hero');
+  const markHeroMediaReady = () => {
+    if (!heroSection || heroSection.dataset.mediaReady) return;
+    heroSection.dataset.mediaReady = '1';
+    heroSection.classList.add('hero-media-ready');
+  };
+
+  if (heroSection) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+      markHeroMediaReady();
+    } else {
+      let frankfurtOk = !heroPhotoVideo;
+      let circleOk = !circleVideo;
+      const tryReady = () => {
+        if (frankfurtOk && circleOk) markHeroMediaReady();
+      };
+      const onFrankfurt = () => {
+        frankfurtOk = true;
+        tryReady();
+      };
+      const onCircle = () => {
+        circleOk = true;
+        tryReady();
+      };
+      if (heroPhotoVideo) {
+        if (heroPhotoVideo.readyState >= 3) onFrankfurt();
+        else heroPhotoVideo.addEventListener('canplay', onFrankfurt, { once: true });
+      }
+      if (circleVideo) {
+        if (circleVideo.readyState >= 3) onCircle();
+        else circleVideo.addEventListener('canplay', onCircle, { once: true });
+      }
+      tryReady();
+      setTimeout(markHeroMediaReady, 10000);
+    }
+  }
+
   // About image strip: count-up stats (first time in view)
   const statsStrip = document.querySelector('.about-image-strip-stats');
   const statNodes = statsStrip ? statsStrip.querySelectorAll('.js-stat-animated') : [];
