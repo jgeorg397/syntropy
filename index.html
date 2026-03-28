@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preload" href="assets/Hero_Poster.png" as="image" type="image/png">
   <title>Syntropy – Family Office</title>
   <link rel="icon" type="image/png" href="assets/Favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,18 +39,15 @@
     <!-- HERO SECTION -->
     <section class="hero" id="hero">
       <div class="hero-photo" aria-hidden="true">
-        <video class="hero-photo-video" muted loop playsinline preload="auto">
+        <video class="hero-photo-video" autoplay muted loop playsinline preload="auto">
           <source src="assets/Video_Frankfurt.mp4" type="video/mp4">
         </video>
       </div>
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="hero-bg-img" aria-hidden="true">
-        <video class="circle-video-bg" muted loop playsinline preload="auto" id="circleVideo">
+        <video class="circle-video-bg" autoplay muted loop playsinline preload="auto" id="circleVideo">
           <source src="assets/Circle Animation_2.mp4" type="video/mp4">
         </video>
-      </div>
-      <div class="hero-poster-layer" aria-hidden="true">
-        <img class="hero-poster-img" src="assets/Hero_Poster.png" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">
       </div>
       <div class="site-container">
         <div class="container hero-content">

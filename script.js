@@ -40,41 +40,58 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroContent = document.querySelector('.hero-content');
   if (heroContent) heroContent.classList.add('visible');
 
+  const heroSection = document.querySelector('.hero');
   const circleVideo = document.getElementById('circleVideo');
   const heroPhotoVideo = document.querySelector('.hero-photo-video');
-  const posterLayer = document.querySelector('.hero-poster-layer');
 
   if (heroPhotoVideo) heroPhotoVideo.playbackRate = 0.5;
   if (circleVideo) circleVideo.playbackRate = 0.75;
 
-  const revealHeroAndPlay = () => {
-    posterLayer?.classList.add('is-hidden');
+  let heroRevealDone = false;
+  const revealHeroMedia = () => {
+    if (heroRevealDone) return;
+    heroRevealDone = true;
+    heroSection?.classList.add('hero-media-visible');
     heroPhotoVideo?.play().catch(() => {});
     circleVideo?.play().catch(() => {});
   };
 
+  const kickPlay = () => {
+    heroPhotoVideo?.play().catch(() => {});
+    circleVideo?.play().catch(() => {});
+  };
+
+  kickPlay();
+
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduceMotion) {
-    revealHeroAndPlay();
-  } else if (heroPhotoVideo && circleVideo && posterLayer) {
-    const bothBuffered = () =>
-      heroPhotoVideo.readyState >= HTMLMediaElement.HAVE_ENOUGH_DATA &&
-      circleVideo.readyState >= HTMLMediaElement.HAVE_ENOUGH_DATA;
-
-    if (bothBuffered()) {
-      revealHeroAndPlay();
-    } else {
-      const onProgress = () => {
-        if (!bothBuffered()) return;
-        heroPhotoVideo.removeEventListener('canplaythrough', onProgress);
-        circleVideo.removeEventListener('canplaythrough', onProgress);
-        revealHeroAndPlay();
-      };
-      heroPhotoVideo.addEventListener('canplaythrough', onProgress);
-      circleVideo.addEventListener('canplaythrough', onProgress);
-    }
+    revealHeroMedia();
   } else {
-    revealHeroAndPlay();
+    // Mobile Safari often never fires canplaythrough; don't wait for both clips.
+    const main = heroPhotoVideo;
+    if (main) {
+      if (main.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+        revealHeroMedia();
+      } else {
+        main.addEventListener('loadeddata', () => revealHeroMedia(), { once: true });
+        main.addEventListener('playing', () => revealHeroMedia(), { once: true });
+      }
+    } else {
+      revealHeroMedia();
+    }
+    // Ensure fade-in even if load events are missing (e.g. aggressive preload / low power).
+    setTimeout(revealHeroMedia, 1800);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') kickPlay();
+    });
+    document.addEventListener(
+      'touchstart',
+      () => {
+        kickPlay();
+        revealHeroMedia();
+      },
+      { once: true, passive: true }
+    );
   }
 
   // About image strip: count-up stats (first time in view)

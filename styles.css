@@ -2824,32 +2824,36 @@ body.legal-page .footer-link:hover {
 
 /* HERO */
 .hero {
- background: #011027;
+ background: #2C3036;
  min-height: 100vh;
  position: relative;
  overflow: hidden;
 }
-/* Static still until both hero videos are ready (script.js removes .is-hidden) */
-.hero-poster-layer {
- position: absolute;
- inset: 0;
- z-index: 3;
- pointer-events: none;
- overflow: hidden;
- transition: opacity 0.55s ease, visibility 0.55s ease;
-}
-.hero-poster-layer.is-hidden {
+/* Videos + overlay fade in over solid hero bg; script adds .hero-media-visible */
+.hero-photo-video,
+.hero-overlay,
+.circle-video-bg {
  opacity: 0;
- visibility: hidden;
+ transition: opacity 0.7s ease;
 }
-.hero-poster-img {
- position: absolute;
- inset: 0;
- width: 100%;
- height: 100%;
- object-fit: cover;
- object-position: center center;
- display: block;
+.hero.hero-media-visible .hero-photo-video {
+ opacity: 1;
+}
+.hero.hero-media-visible .hero-overlay {
+ opacity: 1;
+}
+.hero.hero-media-visible .circle-video-bg {
+ opacity: 0.3;
+}
+@media (prefers-reduced-motion: reduce) {
+ .hero-photo-video,
+ .hero-overlay,
+ .circle-video-bg {
+  transition: none;
+ }
+ .hero-photo-video { opacity: 1; }
+ .hero-overlay { opacity: 1; }
+ .circle-video-bg { opacity: 0.3; }
 }
 .hero-photo {
  position: absolute;
@@ -2885,7 +2889,6 @@ body.legal-page .footer-link:hover {
  pointer-events: none;
 }
 .circle-video-bg {
- opacity: 0.3;
  filter: hue-rotate(170deg) saturate(140%) brightness(0.5);
 }
 .hero-content {
