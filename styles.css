@@ -46,8 +46,8 @@ html {
  align-items: center;
  padding-left: 48px;
  padding-right: 48px;
- padding-top: 8px;
- padding-bottom: 6px;
+ padding-top: 6px;
+ padding-bottom: 5px;
  overflow: visible;
  transform: translateY(0);
  opacity: 1;
@@ -63,16 +63,17 @@ html {
  .status-bar {
  padding-left: 20px;
  padding-right: 20px;
-  padding-top: 7px;
-  padding-bottom: 5px;
+  padding-top: 6px;
+  padding-bottom: 4px;
  }
 }
 @media (max-width: 600px) {
  .status-bar {
  padding-left: 20px;
  padding-right: 20px;
-  padding-top: 5px;
-  padding-bottom: 4px;
+  /* Match desktop bar padding so hexagon spill aligns */
+  padding-top: 6px;
+  padding-bottom: 5px;
  }
 }
 
@@ -98,10 +99,10 @@ html {
 }
 
 .logo-image {
- height: 136px;
+ height: 118px;
  width: auto;
  display: block;
- margin-bottom: -48px;
+ margin-bottom: -42px;
  vertical-align: bottom;
  filter:
   drop-shadow(0.8px 0 0 rgba(255,255,255,0.55))
@@ -112,14 +113,15 @@ html {
 }
 @media (max-width: 900px) {
  .logo-image {
- height: 112px;
- margin-bottom: -36px;
+ height: 98px;
+ margin-bottom: -32px;
  }
 }
 @media (max-width: 600px) {
  .logo-image {
+ /* Match desktop hexagon scale + spill below bar on mobile */
  height: 118px;
- margin-bottom: -38px;
+ margin-bottom: -42px;
  }
 }
 
@@ -2937,6 +2939,16 @@ body.legal-page .footer-link:hover {
     margin-right: 0;
     text-align: left;
   }
+
+  /* Full-width CTA only when hamburger nav is active (same breakpoint) */
+  .hero .hero-cta {
+    align-self: stretch;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+  }
 }
 
 .hero .hero-cta {
@@ -3968,8 +3980,8 @@ body.legal-page .footer-link:hover {
 }
 
 /* Mobile nav behavior:
-   - top of hero (not scrolled): transparent + white logo/lines
-   - scrolled: white nav + dark logo/lines */
+   - top of hero (not scrolled): frosted white bar (video still faintly visible) + hexagon + dark hamburger
+   - scrolled: white nav + hexagon + dark hamburger */
 @media (max-width: 600px) {
  .status-bar {
   z-index: 2200;
@@ -3979,41 +3991,30 @@ body.legal-page .footer-link:hover {
   -webkit-backdrop-filter: blur(14px);
  }
 
- /* Transparent state only on home hero top */
+ /* Hero top: lighter than full transparency, still a hint of video through blur */
  .home-page .status-bar:not(.is-scrolled) {
-  background: transparent !important;
-  box-shadow: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+  background: rgba(255,255,255,0.88) !important;
+  box-shadow: 0 1px 0 rgba(42,50,76,0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
  }
 
  .status-bar::after {
   background: rgba(42,50,76,0.12);
  }
  .home-page .status-bar:not(.is-scrolled)::after {
-  background: rgba(255,255,255,0.7);
+  background: rgba(42,50,76,0.1);
  }
 
  .status-brand {
   position: relative;
   z-index: 2201;
-  align-items: center;
-  align-self: center;
+  /* Same bottom-aligned spill as desktop (hexagon + offset) */
+  align-items: flex-end;
+  align-self: flex-end;
  }
 
- .logo-image {
-  content: url('assets/Logo_Text.png');
-  height: 42px;
-  width: auto;
-  margin-bottom: 0;
-  filter: none;
- }
- .home-page .status-bar:not(.is-scrolled) .logo-image {
-  content: url('assets/Logo_Text_White.png');
- }
- .status-bar.menu-open .logo-image {
-  content: url('assets/Logo_Text.png');
- }
+ /* Hexagon logo + negative margin: inherit desktop treatment; sizing from global .logo-image + max-width:600px rule above */
 
  .mobile-menu {
   z-index: 2000;
@@ -4027,11 +4028,6 @@ body.legal-page .footer-link:hover {
  .menu-icon::before,
  .menu-icon::after {
   background: #2A324C;
- }
- .home-page .status-bar:not(.is-scrolled) .menu-icon,
- .home-page .status-bar:not(.is-scrolled) .menu-icon::before,
- .home-page .status-bar:not(.is-scrolled) .menu-icon::after {
-  background: #ffffff;
  }
 
  .mobile-menu-btn.is-open .menu-icon,
