@@ -40,10 +40,25 @@ document.addEventListener('DOMContentLoaded', () => {
   if (heroContent) heroContent.classList.add('visible');
 
   const circleVideo = document.getElementById('circleVideo');
+  const heroPhotoVideo = document.querySelector('.hero-photo-video');
+
+  if (heroPhotoVideo) heroPhotoVideo.playbackRate = 0.5;
   if (circleVideo) circleVideo.playbackRate = 0.75;
 
-  const heroPhotoVideo = document.querySelector('.hero-photo-video');
-  if (heroPhotoVideo) heroPhotoVideo.playbackRate = 0.5;
+  // Let the main hero video use bandwidth first; then load the decorative circle clip.
+  const boostCircleLoad = () => {
+    if (!circleVideo || circleVideo.dataset.circleBoosted) return;
+    circleVideo.dataset.circleBoosted = '1';
+    circleVideo.preload = 'auto';
+    circleVideo.load();
+    circleVideo.play().catch(() => {});
+  };
+
+  if (heroPhotoVideo && circleVideo) {
+    heroPhotoVideo.addEventListener('playing', boostCircleLoad, { once: true });
+    heroPhotoVideo.addEventListener('canplaythrough', boostCircleLoad, { once: true });
+    setTimeout(boostCircleLoad, 3500);
+  }
 
   // About image strip: count-up stats (first time in view)
   const statsStrip = document.querySelector('.about-image-strip-stats');
