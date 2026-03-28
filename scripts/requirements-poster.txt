@@ -1,3 +1,0 @@
-# For scripts/capture_hero_poster.py
-playwright>=1.40
-pillow>=9.0

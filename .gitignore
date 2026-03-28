@@ -1,5 +1,4 @@
 .DS_Store
 *.log
 node_modules/
-# Intermediate capture from Playwright (webp/jpg are committed)
-assets/Hero_Poster_Composite.png
+.venv/

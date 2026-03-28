@@ -21,6 +21,7 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
       if (entry.target.classList.contains('focus-about')) {
         const focusCards = entry.target.querySelector('.focus-cards');
         if (focusCards) focusCards.classList.add('visible');
@@ -41,61 +42,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const circleVideo = document.getElementById('circleVideo');
   const heroPhotoVideo = document.querySelector('.hero-photo-video');
+  const posterLayer = document.querySelector('.hero-poster-layer');
 
   if (heroPhotoVideo) heroPhotoVideo.playbackRate = 0.5;
   if (circleVideo) circleVideo.playbackRate = 0.75;
 
-  // Let the main hero video use bandwidth first; then load the decorative circle clip.
-  const boostCircleLoad = () => {
-    if (!circleVideo || circleVideo.dataset.circleBoosted) return;
-    circleVideo.dataset.circleBoosted = '1';
-    circleVideo.preload = 'auto';
-    circleVideo.load();
-    circleVideo.play().catch(() => {});
+  const revealHeroAndPlay = () => {
+    posterLayer?.classList.add('is-hidden');
+    heroPhotoVideo?.play().catch(() => {});
+    circleVideo?.play().catch(() => {});
   };
 
-  if (heroPhotoVideo && circleVideo) {
-    heroPhotoVideo.addEventListener('playing', boostCircleLoad, { once: true });
-    heroPhotoVideo.addEventListener('canplaythrough', boostCircleLoad, { once: true });
-    setTimeout(boostCircleLoad, 3500);
-  }
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) {
+    revealHeroAndPlay();
+  } else if (heroPhotoVideo && circleVideo && posterLayer) {
+    const bothBuffered = () =>
+      heroPhotoVideo.readyState >= HTMLMediaElement.HAVE_ENOUGH_DATA &&
+      circleVideo.readyState >= HTMLMediaElement.HAVE_ENOUGH_DATA;
 
-  const heroSection = document.querySelector('.hero');
-  const markHeroMediaReady = () => {
-    if (!heroSection || heroSection.dataset.mediaReady) return;
-    heroSection.dataset.mediaReady = '1';
-    heroSection.classList.add('hero-media-ready');
-  };
-
-  if (heroSection) {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) {
-      markHeroMediaReady();
+    if (bothBuffered()) {
+      revealHeroAndPlay();
     } else {
-      let frankfurtOk = !heroPhotoVideo;
-      let circleOk = !circleVideo;
-      const tryReady = () => {
-        if (frankfurtOk && circleOk) markHeroMediaReady();
+      const onProgress = () => {
+        if (!bothBuffered()) return;
+        heroPhotoVideo.removeEventListener('canplaythrough', onProgress);
+        circleVideo.removeEventListener('canplaythrough', onProgress);
+        revealHeroAndPlay();
       };
-      const onFrankfurt = () => {
-        frankfurtOk = true;
-        tryReady();
-      };
-      const onCircle = () => {
-        circleOk = true;
-        tryReady();
-      };
-      if (heroPhotoVideo) {
-        if (heroPhotoVideo.readyState >= 3) onFrankfurt();
-        else heroPhotoVideo.addEventListener('canplay', onFrankfurt, { once: true });
-      }
-      if (circleVideo) {
-        if (circleVideo.readyState >= 3) onCircle();
-        else circleVideo.addEventListener('canplay', onCircle, { once: true });
-      }
-      tryReady();
-      setTimeout(markHeroMediaReady, 10000);
+      heroPhotoVideo.addEventListener('canplaythrough', onProgress);
+      circleVideo.addEventListener('canplaythrough', onProgress);
     }
+  } else {
+    revealHeroAndPlay();
   }
 
   // About image strip: count-up stats (first time in view)
@@ -343,16 +322,5 @@ if (mobileMenuBtn && mobileMenu) {
 })();
 
 // No JS needed for the static "What we build" buckets
-
-// Fade-in on scroll
-const fadeObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      fadeObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15 });
-document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
 
 // Team cards link to dedicated member pages (team/dennis.html etc.)

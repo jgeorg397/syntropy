@@ -2829,14 +2829,18 @@ body.legal-page .footer-link:hover {
  position: relative;
  overflow: hidden;
 }
-/* Composite still (Frankfurt + overlay + circle) — same object-fit / crop as videos */
+/* Static still until both hero videos are ready (script.js removes .is-hidden) */
 .hero-poster-layer {
  position: absolute;
  inset: 0;
- z-index: 0;
+ z-index: 3;
  pointer-events: none;
  overflow: hidden;
  transition: opacity 0.55s ease, visibility 0.55s ease;
+}
+.hero-poster-layer.is-hidden {
+ opacity: 0;
+ visibility: hidden;
 }
 .hero-poster-img {
  position: absolute;
@@ -2862,13 +2866,6 @@ body.legal-page .footer-link:hover {
  object-fit: cover;
  object-position: center center;
  filter: grayscale(100%) brightness(0.55);
- transition: opacity 0.55s ease;
-}
-.hero:not(.hero-media-ready) .hero-photo-video {
- opacity: 0;
-}
-.hero.hero-media-ready .hero-photo-video {
- opacity: 1;
 }
 .hero-bg-img {
  position: absolute;
@@ -2890,29 +2887,10 @@ body.legal-page .footer-link:hover {
 .circle-video-bg {
  opacity: 0.3;
  filter: hue-rotate(170deg) saturate(140%) brightness(0.5);
- transition: opacity 0.55s ease;
-}
-.hero:not(.hero-media-ready) .circle-video-bg {
- opacity: 0;
-}
-.hero.hero-media-ready .circle-video-bg {
- opacity: 0.3;
-}
-.hero:not(.hero-media-ready) .hero-overlay {
- opacity: 0;
- transition: opacity 0.55s ease;
-}
-.hero.hero-media-ready .hero-overlay {
- opacity: 1;
- transition: opacity 0.55s ease;
-}
-.hero.hero-media-ready .hero-poster-layer {
- opacity: 0;
- visibility: hidden;
 }
 .hero-content {
  position: relative;
- z-index: 3;
+ z-index: 4;
  align-items: center;
  text-align: center;
  max-width: 760px;
@@ -3039,7 +3017,7 @@ body.legal-page .footer-link:hover {
  flex-direction: column;
  align-items: center;
  gap: 8px;
- z-index: 3;
+ z-index: 4;
   text-decoration: none;
   cursor: pointer;
 }
